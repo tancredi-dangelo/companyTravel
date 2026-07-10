@@ -37,7 +37,7 @@ public class EmployeeService {
     public Employee saveEmployee(NewEmployeeDTO payload) {
 
         if (this.employeeRepository.existsByEmail(payload.email())) {
-            throw new BadRequestException("\nThis email is already in use.");
+            throw new BadRequestException("This email is already in use.");
         }
 
         Employee newEmployee = new Employee(payload.name(), payload.surname(), payload.email());
@@ -49,7 +49,7 @@ public class EmployeeService {
     // find by id
     public Employee findEmployeeById(Long id) {
         return this.employeeRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException("\nEmployee with id " + id + " not found."));
+                .orElseThrow(()-> new NotFoundException("Employee with id " + id + " not found."));
     }
 
 
@@ -59,7 +59,7 @@ public class EmployeeService {
         List<Employee> all = this.employeeRepository.findAll();
 
         if (all.isEmpty()) {
-            log.info("\nNo employees registered in database.");
+            log.info("No employees registered in database.");
             return List.of();
         }
 
@@ -67,7 +67,7 @@ public class EmployeeService {
     }
 
 
-    // update by Id
+    // update by id
     public Employee updateEmployeeById(Long id, UpdateEmployeeDTO payload) {
 
         Employee found = findEmployeeById(id);
@@ -86,7 +86,7 @@ public class EmployeeService {
     public Employee updateEmailById(Long id, UpdateEmployeeEmailDTO payload) {
 
         if (employeeRepository.existsByEmail(payload.email())) {
-            throw new BadRequestException("\nThis email is already in use");
+            throw new BadRequestException("This email is already in use");
         }
 
         Employee found = findEmployeeById(id);
@@ -108,7 +108,7 @@ public class EmployeeService {
         try {
             // upload file on Cloudinary
             Map result = fileUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-            log.info("\nAvatar uploaded successfully.");
+            log.info("Avatar uploaded successfully.");
 
             // get file url back from Cloudinary
             String url = (String) result.get("secure_url");
@@ -128,7 +128,7 @@ public class EmployeeService {
     // delete employee by id
     public void deleteEmployeeById(Long id) {
         Employee found = findEmployeeById(id);
-        log.info("\nEmployee deleted.");
+        log.info("Employee deleted.");
         this.employeeRepository.delete(found);
     }
 

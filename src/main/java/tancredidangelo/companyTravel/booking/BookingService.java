@@ -49,14 +49,14 @@ public class BookingService {
 
 
     // find all bookings
-    public List<Booking> findAllEmployees() {
+    public List<Booking> findAllBookings() {
         return this.bookingRepository.findAll();
     }
 
 
     // find by id
     public Booking findBookingById(Long id) {
-        return this.bookingRepository.findById(id).orElseThrow(()-> new NotFoundException("\nBooking not found."));
+        return this.bookingRepository.findById(id).orElseThrow(()-> new NotFoundException("Booking not found."));
     }
 
 
@@ -88,7 +88,7 @@ public class BookingService {
         found.setDate(payload.date());
         found.setNotes(payload.notes());
 
-        log.info("\nBooking updated!");
+        log.info("Booking updated!");
         System.out.println(found);
 
         return this.bookingRepository.save(found);
@@ -101,11 +101,24 @@ public class BookingService {
         booking.setDate(payload.date());
         booking.setNotes(payload.notes());
 
-        log.info("\nBooking updated!");
+        log.info("Booking updated!");
         System.out.println(booking);
 
         return this.bookingRepository.save(booking);
     }
 
+
+    // delete booking
+    public void deleteBookingById(Long id) {
+
+        Booking found = findBookingById(id);
+        log.info("Booking deleted.");
+        this.bookingRepository.delete(found);
+    }
+
+    // delete all bookings
+    public void deleteAllBookings() {
+        this.bookingRepository.deleteAll();
+    }
 
 }

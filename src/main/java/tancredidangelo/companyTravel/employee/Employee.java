@@ -41,7 +41,7 @@ public class Employee {
     private String avatarUrl;
 
     @OneToMany
-    @JoinColumn(name = "employeeId")
+    @JoinColumn(name = "employee_id")
     private List<Booking> bookings;
 
 
