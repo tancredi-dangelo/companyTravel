@@ -125,4 +125,18 @@ public class EmployeeService {
     }
 
 
+    // delete employee by id
+    public void deleteEmployeeById(Long id) {
+        Employee found = findEmployeeById(id);
+        log.info("\nEmployee deleted.");
+        this.employeeRepository.delete(found);
+    }
+
+
+    // delete all
+    public void deleteAllEmployees() {
+        this.employeeRepository.deleteAll();
+    }
+
+
 }
