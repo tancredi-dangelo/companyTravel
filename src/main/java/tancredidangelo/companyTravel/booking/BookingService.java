@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tancredidangelo.companyTravel.booking.bookingDTO.NewBookingDTO;
 import tancredidangelo.companyTravel.booking.bookingDTO.UpdateBookingDTO;
+import tancredidangelo.companyTravel.employee.EmployeeService;
+import tancredidangelo.companyTravel.exceptions.BadRequestException;
 import tancredidangelo.companyTravel.exceptions.NotFoundException;
 
 import java.time.LocalDate;
@@ -13,10 +15,14 @@ import java.util.List;
 @Service
 public class BookingService {
 
-    private final BookingRepository bookingRepository;
+    /// dependency injection
 
-    public BookingService(BookingRepository bookingRepository) {
+    private final BookingRepository bookingRepository;
+    private final EmployeeService employeeService;
+
+    public BookingService(BookingRepository bookingRepository, EmployeeService employeeService) {
         this.bookingRepository = bookingRepository;
+        this.employeeService = employeeService;
     }
 
 
@@ -26,6 +32,12 @@ public class BookingService {
     // save booking
     public Booking saveBooking(NewBookingDTO payload) {
 
+        // check if employee has other bookings for the same date
+        List<Booking> employeeBookings = this.employeeService.findEmployeeById(payload.employeeId()).getBookings();
+        if (employeeBookings.stream().anyMatch(booking -> booking.getDate().isEqual(payload.date()))) {
+            throw new BadRequestException("This user already has a travel booked for that day. Please choose another day.");
+        }
+
         Booking newBooking = new Booking(payload.employeeId(), payload.travelId(), payload.date(), payload.notes());
 
         Booking saved = this.bookingRepository.save(newBooking);
@@ -33,6 +45,12 @@ public class BookingService {
         log.info("Booking successfully created. Id: {}", saved.getId());
 
         return saved;
+    }
+
+
+    // find all bookings
+    public List<Booking> findAllEmployees() {
+        return this.bookingRepository.findAll();
     }
 
 
@@ -62,7 +80,7 @@ public class BookingService {
 
     /// TODO: update booking should depend on Travel:
     /// TODO: travel date changes -> booking date changes OR it's prompted to be canceled
-    // update booking
+    // update booking by id
     public Booking updateBookingById(Long id, UpdateBookingDTO payload) {
 
         Booking found = findBookingById(id);
@@ -74,6 +92,19 @@ public class BookingService {
         System.out.println(found);
 
         return this.bookingRepository.save(found);
+    }
+
+
+    // update booking
+    public Booking updateBooking(Booking booking, UpdateBookingDTO payload) {
+
+        booking.setDate(payload.date());
+        booking.setNotes(payload.notes());
+
+        log.info("\nBooking updated!");
+        System.out.println(booking);
+
+        return this.bookingRepository.save(booking);
     }
 
 
