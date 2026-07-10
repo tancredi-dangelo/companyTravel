@@ -33,7 +33,7 @@ public class Travel {
     private LocalDate date;
 
     @Column
-    private String state;
+    private String status;
 
     @OneToMany
     @JoinColumn(name = "booking_id")
@@ -44,7 +44,7 @@ public class Travel {
     public Travel(String destination, LocalDate date) {
         this.destination = destination;
         this.date = date;
-        this.state = "Programmed";
+        this.status = "Programmed";
         this.bookings = new ArrayList<>();
     }
 
@@ -56,7 +56,7 @@ public class Travel {
                 "id=" + id +
                 ", destination='" + destination + '\'' +
                 ", date=" + date +
-                ", state='" + state + '\'' +
+                ", status='" + status + '\'' +
                 ", bookings=" + bookings +
                 '}';
     }
