@@ -1,11 +1,11 @@
-package tancredidangelo.companyTravel.travel;
+package tancredidangelo.companyTravel.entities.travel;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tancredidangelo.companyTravel.booking.Booking;
+import tancredidangelo.companyTravel.entities.booking.Booking;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class Travel {
     public Travel(String destination, LocalDate date) {
         this.destination = destination;
         this.date = date;
-        this.status = "Programmed";
+        this.status = LocalDate.now().isAfter(date) ? "Completed" : "Programmed";
         this.bookings = new ArrayList<>();
     }
 

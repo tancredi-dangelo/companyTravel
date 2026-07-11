@@ -1,13 +1,13 @@
-package tancredidangelo.companyTravel.travel;
+package tancredidangelo.companyTravel.entities.travel;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tancredidangelo.companyTravel.booking.Booking;
-import tancredidangelo.companyTravel.booking.BookingService;
-import tancredidangelo.companyTravel.booking.bookingDTO.UpdateBookingDTO;
+import tancredidangelo.companyTravel.entities.booking.Booking;
+import tancredidangelo.companyTravel.entities.booking.BookingService;
+import tancredidangelo.companyTravel.entities.booking.bookingDTO.UpdateBookingDTO;
 import tancredidangelo.companyTravel.exceptions.NotFoundException;
-import tancredidangelo.companyTravel.travel.travelDTO.NewTravelDTO;
-import tancredidangelo.companyTravel.travel.travelDTO.UpdateTravelDTO;
+import tancredidangelo.companyTravel.entities.travel.travelDTO.NewTravelDTO;
+import tancredidangelo.companyTravel.entities.travel.travelDTO.UpdateTravelDTO;
 
 import java.util.List;
 
@@ -70,17 +70,23 @@ public class TravelService {
             this.bookingService.updateBooking(booking, bookingUpdate);
         });
 
+        log.info("Travel successfully updated.");
         return found;
     }
 
 
-    // update travel
+    // delete travel by id
+    public void deleteTravelById(Long id) {
+        Travel found = findTravelById(id);
+        this.travelRepository.delete(found);
+        log.info("Travel deleted.");
+    }
 
 
-
-
-
-
+    // delete all travels
+    public void deleteAllTravels() {
+        this.travelRepository.deleteAll();
+    }
 
 
 }

@@ -1,10 +1,10 @@
-package tancredidangelo.companyTravel.booking;
+package tancredidangelo.companyTravel.entities.booking;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tancredidangelo.companyTravel.booking.bookingDTO.NewBookingDTO;
-import tancredidangelo.companyTravel.booking.bookingDTO.UpdateBookingDTO;
-import tancredidangelo.companyTravel.employee.EmployeeService;
+import tancredidangelo.companyTravel.entities.booking.bookingDTO.NewBookingDTO;
+import tancredidangelo.companyTravel.entities.booking.bookingDTO.UpdateBookingDTO;
+import tancredidangelo.companyTravel.entities.employee.EmployeeService;
 import tancredidangelo.companyTravel.exceptions.BadRequestException;
 import tancredidangelo.companyTravel.exceptions.NotFoundException;
 

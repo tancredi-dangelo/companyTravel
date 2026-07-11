@@ -1,4 +1,4 @@
-package tancredidangelo.companyTravel.employee;
+package tancredidangelo.companyTravel.entities.employee;
 
 
 import jakarta.persistence.*;
@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tancredidangelo.companyTravel.booking.Booking;
+import tancredidangelo.companyTravel.entities.booking.Booking;
 
 import java.util.List;
 

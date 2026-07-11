@@ -1,4 +1,4 @@
-package tancredidangelo.companyTravel.travel;
+package tancredidangelo.companyTravel.entities.travel;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

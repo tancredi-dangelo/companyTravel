@@ -1,11 +1,11 @@
-package tancredidangelo.companyTravel.employee;
+package tancredidangelo.companyTravel.entities.employee;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import tancredidangelo.companyTravel.employee.employeeDTO.NewEmployeeDTO;
-import tancredidangelo.companyTravel.employee.employeeDTO.UpdateEmployeeDTO;
-import tancredidangelo.companyTravel.employee.employeeDTO.UpdateEmployeeEmailDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.NewEmployeeDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.UpdateEmployeeDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.UpdateEmployeeEmailDTO;
 
 import java.util.List;
 
@@ -82,8 +82,6 @@ public class EmployeeController {
     public Employee updateEmployeeAvatar(@PathVariable Long id, @RequestParam("profile_picture") MultipartFile file) {
         return this.employeeService.updateAvatar(id, file);
     }
-
-
 
 
 

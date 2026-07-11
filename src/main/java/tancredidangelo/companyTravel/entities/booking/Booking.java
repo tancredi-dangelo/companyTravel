@@ -1,4 +1,4 @@
-package tancredidangelo.companyTravel.booking;
+package tancredidangelo.companyTravel.entities.booking;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

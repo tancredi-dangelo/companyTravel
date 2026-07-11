@@ -1,9 +1,9 @@
-package tancredidangelo.companyTravel.booking;
+package tancredidangelo.companyTravel.entities.booking;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import tancredidangelo.companyTravel.booking.bookingDTO.NewBookingDTO;
-import tancredidangelo.companyTravel.booking.bookingDTO.UpdateBookingDTO;
+import tancredidangelo.companyTravel.entities.booking.bookingDTO.NewBookingDTO;
+import tancredidangelo.companyTravel.entities.booking.bookingDTO.UpdateBookingDTO;
 
 import java.time.LocalDate;
 import java.util.List;

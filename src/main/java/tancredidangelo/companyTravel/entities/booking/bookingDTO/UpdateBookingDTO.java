@@ -1,4 +1,4 @@
-package tancredidangelo.companyTravel.booking.bookingDTO;
+package tancredidangelo.companyTravel.entities.booking.bookingDTO;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;

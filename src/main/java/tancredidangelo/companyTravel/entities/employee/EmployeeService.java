@@ -1,13 +1,13 @@
-package tancredidangelo.companyTravel.employee;
+package tancredidangelo.companyTravel.entities.employee;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import tancredidangelo.companyTravel.employee.employeeDTO.NewEmployeeDTO;
-import tancredidangelo.companyTravel.employee.employeeDTO.UpdateEmployeeDTO;
-import tancredidangelo.companyTravel.employee.employeeDTO.UpdateEmployeeEmailDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.NewEmployeeDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.UpdateEmployeeDTO;
+import tancredidangelo.companyTravel.entities.employee.employeeDTO.UpdateEmployeeEmailDTO;
 import tancredidangelo.companyTravel.exceptions.BadRequestException;
 import tancredidangelo.companyTravel.exceptions.InternalServerErrorException;
 import tancredidangelo.companyTravel.exceptions.NotFoundException;
